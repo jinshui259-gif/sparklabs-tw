@@ -5,7 +5,7 @@
   <link rel="icon" type="image/svg+xml" sizes="any" href="/favicon.svg?v=20261118-1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; font-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; frame-src https://open.spotify.com; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; font-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; frame-src https://open.spotify.com; connect-src 'none'; form-action 'none'; base-uri 'none'">
   <title>SparkLabs Taiwan</title>
 <style>
 /* Offline webfonts, sourced from Fontsource distributions of Google Fonts.
@@ -32124,7 +32124,7 @@ window.activateLegacyPage = function(root) {
   const navTitle=label=>`<span class="d-89-menu-item-title-text">${esc(label)}</span><span class="d-89-title-underline" aria-hidden="true"></span>`;
   function navGroup(label,items,englishMenu) {
     const labels={home:englishMenu?'Overview':'概覽',people:englishMenu?'People':'團隊成員',program:englishMenu?'Program':'加速器計畫',gtm:'CORE Workshop - GTM',news:!englishMenu&&['home','people','member','mentor'].includes(section)?'媒體報導':'News'};
-    const links=items.map(k=>link(k,labels[k]||navName(k),'','dropdown_link w-inline-block')).join('');
+    const links=items.map(k=>k==='people'&&!englishMenu?'<a href="/team.html" class="dropdown_link w-inline-block">'+esc(labels[k])+'</a>':link(k,labels[k]||navName(k),'','dropdown_link w-inline-block')).join('');
     return `<details class="nav_dropd"><summary class="droplink"><span class="nav-label-wrap">${navTitle(label)}</span><span class="menu-chevron" aria-hidden="true"></span></summary><div class="dropdown_open">${links}</div></details>`;
   }
   function chrome() {
