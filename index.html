@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; font-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; frame-src https://open.spotify.com; connect-src 'none'; form-action 'none'; base-uri 'none'">
-  <title>SparkLabs Taiwan｜非官方獨立重製展示</title>
+  <title>SparkLabs Taiwan</title>
 <style>
 /* Offline webfonts, sourced from Fontsource distributions of Google Fonts.
 
@@ -32286,7 +32286,7 @@ window.activateLegacyPage = function(root) {
     dialog.addEventListener('cancel',event=>{event.preventDefault();returnToPeople()});
     main.append(dialog);
     dialog.showModal();
-    document.title=name+' | SparkLabs Taiwan · '+local('非官方獨立重製展示','Unofficial recreation');
+    document.title=name+' | SparkLabs Taiwan';
   }
   const facets=['industry','biz','batch'];
   function directoryCompanyLinks(links){
@@ -32770,7 +32770,7 @@ function hatcherPage() {
       header.querySelector('.lang').href=url('people','',!english,args.toString());
       const card=main.querySelector('a[href="'+url(previousType,previousMember)+'"]');
       card?.focus({preventScroll:true});
-      document.title=sectionName('people')+' | SparkLabs Taiwan · '+local('非官方獨立重製展示','Unofficial recreation');
+      document.title=sectionName('people')+' | SparkLabs Taiwan';
       return;
     }
     chrome();
@@ -32797,7 +32797,7 @@ function hatcherPage() {
     if(section==='hatcher')activateHatcher();
     if(section==='blog')activateBlogFilter();
     if(section==='post')activatePost();
-    document.title=(main.querySelector('h1')?.textContent||'SparkLabs Taiwan')+' | SparkLabs Taiwan · '+local('非官方獨立重製展示','Unofficial recreation');
+    document.title=(main.querySelector('h1')?.textContent||'SparkLabs Taiwan')+' | SparkLabs Taiwan';
     if(section==='people')peopleSearch();
     if(section==='portfolio'){main.dataset.companyLanguage=language;filterCompanies()}
     window.scrollTo(0,0);
