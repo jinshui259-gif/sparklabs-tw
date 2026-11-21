@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://sparklabs.tw/sitemap.xml
-Sitemap: https://sparklabs.tw/team-sitemap.txt
