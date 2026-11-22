@@ -120,7 +120,7 @@
     const source=profileDirectorySource();
     const group=(title,rows,cls)=>`<div class="pp_section"><h2 class="h3 pg_h3">${esc(title)}</h2><div class="partners_wapper w-dyn-list"><div class="partners_list w-dyn-items ${cls}">${rows.map(personCard).join('')}</div></div></div>`;
     return `<div class="reference-content directory-people"><div class="pp_banner" style="background-image:url('${esc(db.assets.people)}')"><div class="container_fix w-container"><h1 class="h1 cp_h1 white">${sectionName('people')}</h1></div></div><div class="pg_section ab_1st"><div class="pp_bg_div tri-1"></div><div class="container_fix w-container"><h1 class="h1 ab_h1 black">${esc(source.introHeading)}</h1><div class="body2 pp_body2 _50"><br>${esc(source.introText)}</div></div></div>`+
-      group(source.groups[0],db.members.slice(0,8),'partners')+group(source.groups[1],db.members.slice(8),'team-grid')+
+      group(source.groups[0],db.members.slice(0,9),'partners')+group(source.groups[1],db.members.slice(9),'team-grid')+
       `<section class="pp_section" id="mentor-index"><div class="div_hight"><div class="column-wrapper"><h2 class="h3 pg_h3">${esc(source.groups[2])}</h2><div class="gallery-list-wrapper w-dyn-list"><label class="directory-sr">${local('搜尋導師','Find a mentor')}<input type="search" id="mentor-query" autocomplete="off"></label><div class="directory-sr" id="mentor-count" aria-live="polite"></div><div id="mentor-list" class="gallery-list w-dyn-items"></div><nav class="pages w-pagination-wrapper pagination_wrapper" id="mentor-pages" aria-label="${local('導師名錄分頁','Mentor directory pages')}"></nav></div></div></div></section></div>`;
   }
   function peopleSearch(){
@@ -615,10 +615,6 @@ function hatcherPage() {
     english=parts[0]==='en';
     section=parts[1]||'home';
     try{id=decodeURIComponent(parts[2]||'')}catch{id=''}
-    if (section === 'member' && id === 'huangshanchun') {
-      location.replace('/team.html');
-      return;
-    }
     args=new URLSearchParams(query);
     if(section==='user-account'){
       section='log-in';english=true;id='';
@@ -687,12 +683,7 @@ function hatcherPage() {
     chrome();
     let html;
     switch(section){
-      case 'home': {
-        const profileLink = `<p class="overview-copy"><a href="/team.html">${local('黃善群的工程背景與量化金融研究','Huang’s engineering background and quantitative finance research')}</a> · ${local('獨立人物資料','Independent profile')}</p>`;
-        html=referencePage(section)+sectionBlock(profileLink,'overview-lower');
-        break;
-      }
-      case 'program':html=referencePage(section);break;
+      case 'home':case 'program':html=referencePage(section);break;
       case 'people':html=peoplePage();break;
       case 'mentor':case 'member':html=missingPage();break;
       case 'portfolio':html=portfolioPage();break;
