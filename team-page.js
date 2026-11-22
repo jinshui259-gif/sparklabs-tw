@@ -1,8 +1,19 @@
 'use strict';
 (() => {
+  function openLegacyRoute() {
+    if (!/^#\/(?:zh|en)\//.test(location.hash)) return false;
+    location.replace('/browse.html' + location.search + location.hash);
+    return true;
+  }
+  if (openLegacyRoute()) return;
+  window.addEventListener('hashchange', openLegacyRoute);
+  const profileCard = document.querySelector('a[data-profile-url]');
+  if (profileCard) profileCard.href = profileCard.dataset.profileUrl;
   const field=document.getElementById('mentor-query');
   const pager=document.getElementById('mentor-pages');
   const cards=Array.from(document.querySelectorAll('#mentor-list > .gallery-list-item'));
+  field.closest('label').hidden=false;
+  pager.hidden=false;
   let page=1;
   function update(){
     const query=field.value.trim().toLocaleLowerCase();
